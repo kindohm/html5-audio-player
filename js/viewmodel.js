@@ -14,6 +14,15 @@
 			songModel.formats[index];
 	};
 
+	var findSongById = function (id) {
+		for (var i = 0; i < catalogViewModel.songs.length; i++) {
+			if (catalogViewModel.songs[i].id === id) {
+				return catalogViewModel.songs[i];
+			}
+		}
+		return null;
+	};
+
 	var buttonClickHandler = function (viewModel) {
 
 		if (currentSong != viewModel) {
@@ -48,19 +57,23 @@
 		this.buttonClick = buttonClickHandler;
 		this.percentComplete = ko.observable('0%');
 		this.progressClick = progressClickHandler;
-		this.mp3Class = PLAYER.isMP3Supported() ? 'linkVisible' : 'linkInvisible';
-		this.oggClass = PLAYER.isOGGSupported() ? 'linkVisible' : 'linkInvisible'; 
+		this.mp3Class = PLAYER.isMP3Supported() ? 
+			'linkVisible' : 'linkInvisible';
+		this.oggClass = PLAYER.isOGGSupported() ? 
+			'linkVisible' : 'linkInvisible'; 
 	}
 
 	function CatalogViewModel (catalog) {
 		this.songs = [];
+
 		for (var i = 0; i < catalog.songs.length; i++) {
 			this.songs.push(
 				new SongViewModel( catalog.songs[i] ) );
 			PLAYER.addTrack(catalog.songs[i]);
 		}
 
-		this.playerClass = PLAYER.isSupported() ? 'playerVisible' : 'playerInvisible';
+		this.playerClass = PLAYER.isSupported() ? 
+			'playerVisible' : 'playerInvisible';
 		this.notSupportedClass = PLAYER.isSupported() ? 
 			'notSupportedInvisible' : 'notSupportedInvisible';
 	}
@@ -75,11 +88,23 @@
 			currentSong.percentComplete('0%');
 			currentSong = null;
 		});
+
+		PLAYER.trackAdvanced( function (nextTrack) {
+			var song = findSongById(nextTrack.id);
+			currentSong = song;
+			currentSong.buttonImage(pauseImage);				
+		});
+
+		$('#continuous').click( function () {
+			PLAYER.continuous = $('#continuous').attr('checked') != undefined;
+			console.log(PLAYER.continuous);
+		});
 	});
 
 	var updatePercentComplete = function () {
 		if (currentSong != null) {
-			currentSong.percentComplete(PLAYER.getPercentComplete(currentSong.id));
+			currentSong.percentComplete(
+				PLAYER.getPercentComplete(currentSong.id));
 		}
 
 		setTimeout(updatePercentComplete, 100);

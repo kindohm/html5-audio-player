@@ -19,7 +19,12 @@
 
 	<h1>HTML5 Audio Player</h1>
 
-	<div id="player" data-bind="{ foreach: songs, attr : { class : playerClass } }">
+	<div id="player">
+
+	<p><input type="checkbox" id="continuous" /> continuous play</p>
+
+
+	<div data-bind="{ foreach: songs, attr : { class : playerClass } }">
 		
 		<div class="song">
 			<button class="toggleButton" data-bind="click: buttonClick">
@@ -35,6 +40,8 @@
 			</div>
 			<div class="clear"></div>
 		</div>
+
+	</div>
 
 	</div>
 

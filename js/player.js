@@ -3,7 +3,7 @@ var PLAYER = (function () {
 	var player = {};
 	var tracks = [];
 	var currentTrack = null;
-	var endedHandler;
+	var endedHandler, advancedHandler;
 
 	var track = {
 		id : '',
@@ -18,6 +18,25 @@ var PLAYER = (function () {
 		}
 		return null;
 	};
+
+	var handleTrackEnded = function (track) {
+		if (endedHandler != null) {
+			endedHandler(track.id);
+		}
+
+		if (player.continuous) {
+			var index = tracks.indexOf(track);
+			index = index == tracks.length - 1 ? 0 : index + 1;
+			var nextTrack = tracks[index];
+			player.togglePlay(nextTrack.id);
+	
+			if (advancedHandler != null) {
+				advancedHandler(currentTrack);
+			}
+		}
+	};
+
+	player.continuous = true;
 
 	player.isOGGSupported = function () {
 		return buzz.isOGGSupported();
@@ -40,9 +59,7 @@ var PLAYER = (function () {
 		tracks.push(newTrack);
 
 		newTrack.sound.bind('ended', function () {
-			if (endedHandler != null) {
-				endedHandler(newTrack.id);
-			}
+			handleTrackEnded(newTrack);
 		});
 	};	
 
@@ -82,6 +99,10 @@ var PLAYER = (function () {
 	player.trackEnded = function (handler) {
 		endedHandler = handler;
 	};		
+
+	player.trackAdvanced = function (handler) {
+		advancedHandler = handler;
+	};
 
 	return player;
 
