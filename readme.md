@@ -10,4 +10,10 @@ A lightweight audio player JavaScript object was developed (contained
 in js/player.js) to wrap buzz.js and handle play/pause logic, among
 other things.
 
+buzz.js:
+https://github.com/jaysalvat/buzz
+
+knockout.js:
+http://knockoutjs.com
+
 
