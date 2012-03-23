@@ -29,6 +29,9 @@
 				<h2 data-bind="text: title" class="songTitle"></h2>
 				<p><a data-bind="attr: { href: mp3 }">mp3</a>&nbsp;
 					<a data-bind="attr: { href: ogg }">ogg</a></p>
+				<div class="progress">
+					<span class="meter" 
+						data-bind="style: { width: percentComplete() }"></span></div>
 			</div>
 			<div class="clear"></div>
 		</div>

@@ -19,6 +19,7 @@
 		if (currentSong != viewModel) {
 			if (currentSong != null) {
 				currentSong.buttonImage(playImage);
+				currentSong.percentComplete('0%');
 			}
 			currentSong = viewModel;
 		}
@@ -36,6 +37,7 @@
 		this.ogg = makePath(model, 'ogg');
 		this.buttonImage = ko.observable(playImage);
 		this.buttonClick = buttonClickHandler;
+		this.percentComplete = ko.observable('0%');
 	}
 
 	function CatalogViewModel (catalog) {
@@ -53,5 +55,15 @@
 		ko.applyBindings(catalogViewModel);
 
 	});
+
+	var updatePercentComplete = function () {
+		if (currentSong != null) {
+			currentSong.percentComplete(PLAYER.getPercentComplete(currentSong.id));
+		}
+
+		setTimeout(updatePercentComplete, 100);
+	};
+
+	setTimeout(updatePercentComplete, 100);
 
 })();

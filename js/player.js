@@ -45,6 +45,14 @@ var PLAYER = (function () {
 		currentTrack.sound.togglePlay();
 	};
 
+	player.getPercentComplete = function () {
+		if (currentTrack === null) {
+			return '0%';
+		}
+
+		return currentTrack.sound.getPercent() + '%';
+	};
+
 	return player;
 
 })();

@@ -42,3 +42,17 @@ body {
 	clear: both;
 }
 
+.progress {
+	height: 20px;
+	padding: 2px;
+	border: solid 1px #000;
+}
+
+.meter {
+	width: 33%;
+	background: #666;
+	position: relative;
+	overflow: hidden;
+	display: block;
+	height: 100%;
+}
