@@ -1,4 +1,13 @@
-Sample HTML5 audio player app. Built with buzz.js and
-knockout.js. Requires a browser that supports the
-HTML5 `audio` element (mp3 or ogg).
+This is a sample implementation of an audio player using straight up
+HTML and JavaScript. It depends on modern audio capabilities of 
+browsers (all major browsers should support it) and uses the buzz.js
+library for all audio interaction, including detection for MP3
+and OGG format support.
+
+Knockout.js is used for user interface data binding and interactions.
+
+A lightweight audio player JavaScript object was developed (contained
+in js/player.js) to wrap buzz.js and handle play/pause logic, among
+other things.
+
 
