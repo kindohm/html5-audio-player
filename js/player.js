@@ -2,7 +2,7 @@ var PLAYER = (function () {
 
 	var player = {};
 	var tracks = [];
-	var currentTrack;
+	var currentTrack = null;
 
 	var track = {
 		id : '',
@@ -18,7 +18,7 @@ var PLAYER = (function () {
 		return null;
 	};
 
-	player.add = function (song) {
+	player.addTrack = function (song) {
 		var newTrack = Object.create(track);
 		newTrack.id = song.id;
 		newTrack.sound = new buzz.sound(
@@ -29,13 +29,20 @@ var PLAYER = (function () {
 
 	player.togglePlay = function (id) {	
 		var track = findTrack(id);
-		if (track === currentTrack) {
-			track.sound.togglePlay();
+
+		if (currentTrack === null) {
+			currentTrack = track;
 		}
 
-		currentTrack.sound.stop();
+		if (track === currentTrack) {
+			track.sound.togglePlay();
+			return;
+		}
+
+		currentTrack.sound.pause();
+		currentTrack.sound.setTime(0);
 		currentTrack = track;
-		currentTrack.togglePlay();
+		currentTrack.sound.togglePlay();
 	};
 
 	return player;

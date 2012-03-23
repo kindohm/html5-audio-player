@@ -11,6 +11,7 @@
 
 	<!-- our own audio player stuff -->
 	<script type="text/javascript" src="js/catalog.js"></script>	
+	<script type="text/javascript" src="js/player.js"></script>
 	<script type="text/javascript" src="js/viewmodel.js"></script>
 </head>
 <body>
@@ -21,7 +22,7 @@
 	<div data-bind="foreach: songs">
 		
 		<div class="song">
-			<button class="toggleButton">
+			<button class="toggleButton" data-bind="click: buttonClick">
 				<img class="buttonImage" data-bind="attr: { src : buttonImage }"></img> 
 			</button>
 			<div class="content">
