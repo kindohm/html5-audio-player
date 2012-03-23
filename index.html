@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML5 Audio Player</title>
+	<link rel="stylesheet" href="css/styles.css"/>
+	
+	<!-- external dependncies (e.g. jquery, knockout, buzz, etc) -->
+	<script type="text/javascript" src="dependencies/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="dependencies/knockout-2.0.0.js"></script>
+	<script type="text/javascript" src="dependencies/buzz.js"></script>
+
+	<!-- our own audio player stuff -->
+	<script type="text/javascript" src="js/catalog.js"></script>	
+	<script type="text/javascript" src="js/viewmodel.js"></script>
+</head>
+<body>
+<div id="wrapper">
+
+	<h1>HTML5 Audio Player</h1>
+
+	<div data-bind="foreach: songs">
+		
+		<div class="song">
+			<button class="toggleButton">
+				<img src="images/play.png" class="play" />
+				<img src="images/pause.png" class="stop" />
+			</button>
+			<div class="content">
+				<h2 data-bind="text: title" class="songTitle"></h2>
+				<p><a data-bind="attr: { href: mp3 }">mp3</a>&nbsp;
+					<a data-bind="attr: { href: ogg }">ogg</a></p>
+			</div>
+			<div class="clear"></div>
+		</div>
+
+	</div>
+
+</div>
+</body>
