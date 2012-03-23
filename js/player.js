@@ -27,6 +27,10 @@ var PLAYER = (function () {
 		return buzz.isMP3Supported();
 	};
 
+	player.isSupported = function () {
+		return buzz.isSupported();
+	};
+
 	player.addTrack = function (song) {
 		var newTrack = Object.create(track);
 		newTrack.id = song.id;

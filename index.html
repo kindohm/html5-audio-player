@@ -19,7 +19,7 @@
 
 	<h1>HTML5 Audio Player</h1>
 
-	<div data-bind="foreach: songs">
+	<div id="player" data-bind="{ foreach: songs, attr : { class : playerClass } }">
 		
 		<div class="song">
 			<button class="toggleButton" data-bind="click: buttonClick">
@@ -36,6 +36,10 @@
 			<div class="clear"></div>
 		</div>
 
+	</div>
+
+	<div id="notSupported" data-bind="attr: { class : notSupportedClass }">
+		<p>Sorry, your browser does not support audio. How sad.</p>
 	</div>
 
 </div>

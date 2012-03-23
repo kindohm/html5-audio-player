@@ -59,6 +59,10 @@
 				new SongViewModel( catalog.songs[i] ) );
 			PLAYER.addTrack(catalog.songs[i]);
 		}
+
+		this.playerClass = PLAYER.isSupported() ? 'playerVisible' : 'playerInvisible';
+		this.notSupportedClass = PLAYER.isSupported() ? 
+			'notSupportedInvisible' : 'notSupportedInvisible';
 	}
 
 	window.addEventListener('load', function () {

@@ -58,9 +58,27 @@ body {
 }
 
 .linkVisible {
+	display: inline;
 }
 
 .linkInvisible {
 	display: none;
 }
+
+.notSupportedInvisible{
+	display: none;
+}
+
+.notSupportedVisible {
+	display: block;
+}
+
+.playerInvisible {
+	display: none;
+}
+
+.playerVisible {
+	display: block;
+}
+
 
