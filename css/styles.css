@@ -46,6 +46,7 @@ body {
 	height: 20px;
 	padding: 2px;
 	border: solid 1px #000;
+	cursor: pointer;
 }
 
 .meter {
