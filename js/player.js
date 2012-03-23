@@ -36,7 +36,7 @@ var PLAYER = (function () {
 		newTrack.id = song.id;
 		newTrack.sound = new buzz.sound(
 			song.basePath,
-			{ formats: song.formats, preload: true });
+			{ formats: song.formats, preload: false });
 		tracks.push(newTrack);
 
 		newTrack.sound.bind('ended', function () {
