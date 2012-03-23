@@ -30,6 +30,15 @@
 				pauseImage : playImage);
 	};
 
+	var progressClickHandler = function (viewModel, event) {
+		if (viewModel === currentSong) {
+			var div = $(event.currentTarget);
+			var width = $(div).width();
+			var percent = event.offsetX * 100 / width;
+			PLAYER.scrub(viewModel.id, percent);
+		}
+	};
+
 	function SongViewModel (model) {
 		this.id = model.id;
 		this.title = model.title;
@@ -38,6 +47,7 @@
 		this.buttonImage = ko.observable(playImage);
 		this.buttonClick = buttonClickHandler;
 		this.percentComplete = ko.observable('0%');
+		this.progressClick = progressClickHandler;
 	}
 
 	function CatalogViewModel (catalog) {
@@ -54,6 +64,11 @@
 		catalogViewModel = new CatalogViewModel(CATALOG);
 		ko.applyBindings(catalogViewModel);
 
+		PLAYER.trackEnded( function (id) {
+			currentSong.buttonImage(playImage);
+			currentSong.percentComplete('0%');
+			currentSong = null;
+		});
 	});
 
 	var updatePercentComplete = function () {

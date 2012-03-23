@@ -3,6 +3,7 @@ var PLAYER = (function () {
 	var player = {};
 	var tracks = [];
 	var currentTrack = null;
+	var endedHandler;
 
 	var track = {
 		id : '',
@@ -25,6 +26,12 @@ var PLAYER = (function () {
 			song.basePath,
 			{ formats: song.formats });
 		tracks.push(newTrack);
+
+		newTrack.sound.bind('ended', function () {
+			if (endedHandler != null) {
+				endedHandler(newTrack.id);
+			}
+		});
 	};	
 
 	player.togglePlay = function (id) {	
@@ -52,6 +59,17 @@ var PLAYER = (function () {
 
 		return currentTrack.sound.getPercent() + '%';
 	};
+
+	player.scrub = function (id, percent) {
+		var track = findTrack(id);
+		if (track == currentTrack) {
+			track.sound.setPercent(percent);
+		}
+	};
+
+	player.trackEnded = function (handler) {
+		endedHandler = handler;
+	};		
 
 	return player;
 
