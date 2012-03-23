@@ -3,14 +3,16 @@ var CATALOG = (function () {
 	var catalog = {
 		songs : [
 			{ 
+				'id' : 1,
 				'title' : 'title 1',
-				'mp3' : 'song1.mp3',
-				'ogg' : 'song1.ogg'
+				'basePath' : 'song1',
+				'formats' : [ 'ogg', 'mp3' ]
 			},
 			{
+				'id' : 2,
 				'title' : 'title 2',
-				'mp3' : 'song2.mp3',
-				'ogg' : 'song2.mp3'
+				'basePath' : 'song2',
+				'formats' : [ 'ogg', 'mp3' ]
 			}
 		]
 	};

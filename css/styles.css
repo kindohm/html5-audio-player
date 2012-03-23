@@ -34,12 +34,8 @@ body {
 	margin-top: 0px;
 }
 
-.stop, .play {
+.buttonImage {
 	width: 24px;
-}
-
-.stop {
-	display: none;
 }
 
 .clear {
