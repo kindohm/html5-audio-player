@@ -19,6 +19,14 @@ var PLAYER = (function () {
 		return null;
 	};
 
+	player.isOGGSupported = function () {
+		return buzz.isOGGSupported();
+	};
+
+	player.isMP3Supported = function () {
+		return buzz.isMP3Supported();
+	};
+
 	player.addTrack = function (song) {
 		var newTrack = Object.create(track);
 		newTrack.id = song.id;

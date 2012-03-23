@@ -56,3 +56,11 @@ body {
 	display: block;
 	height: 100%;
 }
+
+.linkVisible {
+}
+
+.linkInvisible {
+	display: none;
+}
+

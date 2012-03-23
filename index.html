@@ -27,8 +27,8 @@
 			</button>
 			<div class="content">
 				<h2 data-bind="text: title" class="songTitle"></h2>
-				<p><a data-bind="attr: { href: mp3 }">mp3</a>&nbsp;
-					<a data-bind="attr: { href: ogg }">ogg</a></p>
+				<p><a data-bind="attr: { href: mp3, class: mp3Class }">mp3</a>
+					<a data-bind="attr: { href: ogg, class: oggClass  }">ogg</a></p>
 				<div class="progress" data-bind="click: progressClick">
 					<span class="meter" 
 						data-bind="style: { width: percentComplete() }"></span></div>

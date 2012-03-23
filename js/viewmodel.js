@@ -48,6 +48,8 @@
 		this.buttonClick = buttonClickHandler;
 		this.percentComplete = ko.observable('0%');
 		this.progressClick = progressClickHandler;
+		this.mp3Class = PLAYER.isMP3Supported() ? 'linkVisible' : 'linkInvisible';
+		this.oggClass = PLAYER.isOGGSupported() ? 'linkVisible' : 'linkInvisible'; 
 	}
 
 	function CatalogViewModel (catalog) {
