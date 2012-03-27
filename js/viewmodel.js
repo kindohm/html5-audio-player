@@ -99,6 +99,8 @@
 			PLAYER.continuous = $('#continuous').attr('checked') != undefined;
 			console.log(PLAYER.continuous);
 		});
+
+		$('#continuous').attr('checked', 'true');
 	});
 
 	var updatePercentComplete = function () {
